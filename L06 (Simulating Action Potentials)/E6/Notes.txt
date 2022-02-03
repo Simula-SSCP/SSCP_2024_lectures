@@ -1,0 +1,19 @@
+Notes:
+
+Exercise 6
+
+# Y = odeint(rhs,y0,time,(p,))
+# m = Y[:,0]
+# h = Y[:,1]
+# n = Y[:,2]
+# V = Y[:,3]
+
+# plt.subplot(2,1,1)
+# plt.plot(time, m**3, time, h, time, n**4)
+# plt.ylabel('fraction')
+# plt.legend((r'$m^3$',r'$h$',r'$n^4$'))
+# plt.subplot(2,1,2)
+# plt.plot(time,V);
+# plt.ylabel('V(mV)')
+# plt.xlabel('time(ms)')
+# plt.show()

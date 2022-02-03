@@ -1,0 +1,187 @@
+#generated from: luo_rudy_1994.cellml
+V; .external(Vm); .nodal();
+Iion; .external(); .nodal();
+
+# Constants
+K_mKo = 1.5; .units(nmol/mm^3);
+G_rel_max = 60.0; .units(unitless/ms);
+tau_on = 2.0; .units(ms);
+P_K = 1.93e-9; .units(mm/ms);
+tau_tr = 180.0; .units(ms);
+K_NaCa = 20.0; .units(uA/mm^2);
+Ca_NSR_max = 15.0; .units(nmol/mm^3);
+stimPeriod = 1e3; .units(unitless);
+tau_off = 2.0; .units(ms);
+V_myo = 0.68; .units(unitless);
+I_up = 0.005; .units(nmol/mm^3/ms);
+gamma_Ki = 0.75; .units(unitless);
+V_JSR = 0.0048; .units(unitless);
+gamma_Ko = 0.75; .units(unitless);
+g_Cab = 3.016e-5; .units(mS/mm^2);
+PR_NaK = 0.01833; .units(unitless);
+K_mrel = 0.8e-3; .units(nmol/mm^3);
+g_Kp = 1.83e-4; .units(mS/mm^2);
+P_Na = 6.75e-9; .units(mm/ms);
+K_mNai = 10.0; .units(nmol/mm^3);
+eta = 0.35; .units(unitless);
+g_K1_max = 7.5e-3; .units(mS/mm^2);
+P_ns_Ca = 1.75e-9; .units(mm/ms);
+Nao = 140.0; .units(nmol/mm^3);
+I_NaK = 1.5e-2; .units(uA/mm^2);
+delta_Ca_ith = 0.18e-3; .units(nmol/mm^3);
+I_pCa = 1.15e-2; .units(uA/mm^2);
+K_mNa = 87.5; .units(nmol/mm^3);
+t_CICR = 0.0; .units(ms);
+F = 96845.0; .units(nC/nmol);
+gamma_Cao = 0.34; .units(unitless);
+Ko = 5.4; .units(nmol/mm^3);
+g_K_max = 2.82e-3; .units(mS/mm^2);
+gamma_Cai = 1.0; .units(unitless);
+P_Ca = 5.4e-6; .units(mm/ms);
+R = 8.3145e3; .units(pJ/K/nmol);
+Cao = 1.8; .units(nmol/mm^3);
+T = 310.0; .units(K);
+delta_Ca_i2 = 0.0; .units(nmol/mm^3);
+K_sat = 0.1; .units(unitless);
+gamma_Nao = 0.75; .units(unitless);
+V_NSR = 0.0552; .units(unitless);
+stimDuration = 0.5; .units(unitless);
+Cm = 0.01; .units(uF/mm^2);
+gamma_Nai = 0.75; .units(unitless);
+Am = 200; .units(unitless/mm);
+K_mup = 0.92e-3; .units(nmol/mm^3);
+Km_Ca = 0.6e-3; .units(nmol/mm^3);
+K_mpCa = 0.5e-3; .units(nmol/mm^3);
+g_Nab = 1.41e-5; .units(mS/mm^2);
+g_Na = 0.16; .units(mS/mm^2);
+K_mCa = 1.38; .units(nmol/mm^3);
+K_m_ns_Ca = 1.2e-3; .units(nmol/mm^3);
+stimCurrent = 0.5; .units(unitless);
+# Constants
+
+# Initial values
+V_init = -84.624; .units(mV);
+m_init = 0.0; .units(unitless);
+h_init = 1.0; .units(unitless);
+j_init = 1.0; .units(unitless);
+d_init = 0.0; .units(unitless);
+f_init = 1.0; .units(unitless);
+X_init = 0.0; .units(unitless);
+Nai_init = 10.0; .units(nmol/mm^3);
+Cai_init = 0.12e-3; .units(nmol/mm^3);
+Ki_init = 145.0; .units(nmol/mm^3);
+Ca_JSR_init = 1.8; .units(nmol/mm^3);
+Ca_NSR_init = 1.8; .units(nmol/mm^3);
+
+#membrane
+Iion = -(dV_dt); .units(uA/uF);
+dV_dt = ((0 - (i_Na+i_Ca_L+i_K+i_K1+i_Kp+i_NaCa+i_p_Ca+i_Na_b+i_Ca_b+i_NaK+i_ns_Ca))/Cm); .units(mV/ms);
+
+#fast_sodium_current
+i_Na = (g_Na*pow(m,3.0)*h*j*(V - E_Na)); .units(uA/mm^2);
+E_Na = (((R*T)/F)*log((Nao/Nai))); .units(mV);
+
+#fast_sodium_current_m_gate
+alpha_m = ((0.32*(V+47.13))/(1.0 - exp((-0.1*(V+47.13))))); .units(unitless/ms);
+beta_m = (0.08*exp((-V/11.0))); .units(unitless/ms);
+
+#fast_sodium_current_h_gate
+beta_h = ((V<-40.0) ? ((3.56*exp((0.079*V)))+(310000.0*exp((0.35*V)))) : (1.0/(0.13*(1.0+exp(((V+10.66)/-11.1)))))); .units(unitless/ms);
+alpha_h = ((V<-40.0) ? (0.135*exp(((80.0+V)/-6.8))) : 0.0); .units(unitless/ms);
+
+#fast_sodium_current_j_gate
+beta_j = ((V<-40.0) ? ((0.1212*exp((-0.01052*V)))/(1.0+exp((-0.1378*(V+40.14))))) : ((0.3*exp((-0.0000002535*V)))/(1.0+exp((-0.1*(V+32.0)))))); .units(unitless/ms);
+alpha_j = ((V<-40.0) ? (((-127140.0*exp((0.2444*V))) - (0.00003474*exp((-0.04391*V))))*((V+37.78)/(1.0+exp((0.311*(V+79.23)))))) : 0.0); .units(unitless/ms);
+
+#L_type_Ca_channel
+i_CaK = (d*f*f_Ca*I_CaK); .units(uA/mm^2);
+I_CaCa = (P_Ca*pow(2.0,2.0)*((V*pow(F,2.0))/(R*T))*(((gamma_Cai*Cai*exp(((2.0*V*F)/(R*T)))) - (gamma_Cao*Cao))/(exp(((2.0*V*F)/(R*T))) - 1.0))); .units(uA/mm^2);
+i_CaCa = (d*f*f_Ca*I_CaCa); .units(uA/mm^2);
+I_CaNa = (P_Na*pow(1.0,2.0)*((V*pow(F,2.0))/(R*T))*(((gamma_Nai*Nai*exp(((1.0*V*F)/(R*T)))) - (gamma_Nao*Nao))/(exp(((1.0*V*F)/(R*T))) - 1.0))); .units(uA/mm^2);
+i_CaNa = (d*f*f_Ca*I_CaNa); .units(uA/mm^2);
+i_Ca_L = (i_CaCa+i_CaK+i_CaNa); .units(uA/mm^2);
+I_CaK = (P_K*pow(1.0,2.0)*((V*pow(F,2.0))/(R*T))*(((gamma_Ki*Ki*exp(((1.0*V*F)/(R*T)))) - (gamma_Ko*Ko))/(exp(((1.0*V*F)/(R*T))) - 1.0))); .units(uA/mm^2);
+
+#L_type_Ca_channel_d_gate
+tau_d = (d_infinity*((1.0 - exp(-((V+10.0)/6.24)))/(0.035*(V+10.0)))); .units(ms);
+d_infinity = (1.0/(1.0+exp(-((V+10.0)/6.24)))); .units(unitless);
+beta_d = ((1.0 - d_infinity)/tau_d); .units(unitless/ms);
+
+#L_type_Ca_channel_f_gate
+tau_f = (1.0/((0.0197*exp(-pow((0.0337*(V+10.0)),2.0)))+0.02)); .units(ms);
+beta_f = ((1.0 - f_infinity)/tau_f); .units(unitless/ms);
+f_infinity = ((1.0/(1.0+exp(((V+35.06)/8.6))))+(0.6/(1.0+exp(((50.0 - V)/20.0))))); .units(unitless);
+
+#L_type_Ca_channel_f_Ca_gate
+f_Ca = (1.0/(1.0+pow((Cai/Km_Ca),2.0))); .units(unitless);
+
+#time_dependent_potassium_current
+E_K = (((R*T)/F)*log(((Ko+(PR_NaK*Nao))/(Ki+(PR_NaK*Nai))))); .units(mV);
+i_K = (g_K*pow(X,2.0)*Xi*(V - E_K)); .units(uA/mm^2);
+g_K = (g_K_max*sqrt((Ko/5.4))); .units(mS/mm^2);
+
+#time_dependent_potassium_current_X_gate
+beta_X = ((0.000131*(V+30.0))/(-1.0+exp((0.0687*(V+30.0))))); .units(unitless/ms);
+alpha_X = ((0.0000719*(V+30.0))/(1.0 - exp((-0.148*(V+30.0))))); .units(unitless/ms);
+
+#time_dependent_potassium_current_Xi_gate
+Xi = (1.0/(1.0+exp(((V - 56.26)/32.1)))); .units(unitless);
+
+#time_independent_potassium_current
+i_K1 = (g_K1*K1_infinity*(V - E_K1)); .units(uA/mm^2);
+g_K1 = (g_K1_max*sqrt((Ko/5.4))); .units(mS/mm^2);
+E_K1 = (((R*T)/F)*log((Ko/Ki))); .units(mV);
+
+#time_independent_potassium_current_K1_gate
+K1_infinity = (alpha_K1/(alpha_K1+beta_K1)); .units(unitless);
+beta_K1 = (((0.49124*exp((0.08032*((V+5.476) - E_K1))))+exp((0.06175*(V - (E_K1+594.31)))))/(1.0+exp((-0.5143*((V - E_K1)+4.753))))); .units(unitless/ms);
+alpha_K1 = (1.02/(1.0+exp((0.2385*((V - E_K1) - 59.215))))); .units(unitless/ms);
+
+#plateau_potassium_current
+i_Kp = (g_Kp*Kp*(V - E_Kp)); .units(uA/mm^2);
+Kp = (1.0/(1.0+exp(((7.488 - V)/5.98)))); .units(unitless);
+E_Kp = E_K1; .units(mV);
+
+#sarcolemmal_calcium_pump
+i_p_Ca = (I_pCa*(Cai/(K_mpCa+Cai))); .units(uA/mm^2);
+
+#sodium_background_current
+E_NaN = E_Na; .units(mV);
+i_Na_b = (g_Nab*(V - E_NaN)); .units(uA/mm^2);
+
+#calcium_background_current
+E_CaN = (((R*T)/(2.0*F))*log((Cao/Cai))); .units(mV);
+i_Ca_b = (g_Cab*(V - E_CaN)); .units(uA/mm^2);
+
+#sodium_potassium_pump
+f_NaK = (1.0/((1.0+(0.1245*exp((-0.1*((V*F)/(R*T))))))+(0.0365*sigma*exp(-((V*F)/(R*T)))))); .units(unitless);
+i_NaK = (I_NaK*f_NaK*(1.0/(1.0+pow((K_mNai/Nai),1.5)))*(Ko/(Ko+K_mKo))); .units(uA/mm^2);
+sigma = ((1.0/7.0)*(exp((Nao/67.3)) - 1.0)); .units(unitless);
+
+#non_specific_calcium_activated_current
+i_ns_Na = (I_ns_Na*(1.0/(1.0+pow((K_m_ns_Ca/Cai),3.0)))); .units(uA/mm^2);
+I_ns_Na = (P_ns_Ca*pow(1.0,2.0)*((Vns*pow(F,2.0))/(R*T))*(((gamma_Nai*Nai*exp(((1.0*Vns*F)/(R*T)))) - (gamma_Nao*Nao))/(exp(((1.0*Vns*F)/(R*T))) - 1.0))); .units(uA/mm^2);
+i_ns_K = (I_ns_K*(1.0/(1.0+pow((K_m_ns_Ca/Cai),3.0)))); .units(uA/mm^2);
+i_ns_Ca = (i_ns_Na+i_ns_K); .units(uA/mm^2);
+Vns = (V - EnsCa); .units(mV);
+I_ns_K = (P_ns_Ca*pow(1.0,2.0)*((Vns*pow(F,2.0))/(R*T))*(((gamma_Ki*Ki*exp(((1.0*Vns*F)/(R*T)))) - (gamma_Ko*Ko))/(exp(((1.0*Vns*F)/(R*T))) - 1.0))); .units(uA/mm^2);
+EnsCa = (((R*T)/F)*log(((Ko+Nao)/(Ki+Nai)))); .units(mV);
+
+#Na_Ca_exchanger
+i_NaCa = (K_NaCa*(1.0/(pow(K_mNa,3.0)+pow(Nao,3.0)))*(1.0/(K_mCa+Cao))*(1.0/(1.0+(K_sat*exp(((eta - 1.0)*V*(F/(R*T)))))))*((exp((eta*V*(F/(R*T))))*pow(Nai,3.0)*Cao) - (exp(((eta - 1.0)*V*(F/(R*T))))*pow(Nao,3.0)*Cai))); .units(uA/mm^2);
+
+#calcium_fluxes_in_the_SR
+i_leak = (K_leak*Ca_NSR); .units(nmol/mm^3/ms);
+G_rel = (G_rel_peak*((delta_Ca_i2 - delta_Ca_ith)/((K_mrel+delta_Ca_i2) - delta_Ca_ith))*(1.0 - exp(-(t_CICR/tau_on)))*exp(-(t_CICR/tau_off))); .units(unitless/ms);
+G_rel_peak = ((delta_Ca_i2<delta_Ca_ith) ? 0.0 : G_rel_max); .units(unitless/ms);
+K_leak = (I_up/Ca_NSR_max); .units(unitless/ms);
+i_rel = (G_rel*(Ca_JSR - Cai)); .units(nmol/mm^3/ms);
+i_tr = ((Ca_NSR - Ca_JSR)/tau_tr); .units(nmol/mm^3/ms);
+i_up = (I_up*(Cai/(Cai+K_mup))); .units(nmol/mm^3/ms);
+
+#ionic_concentrations
+diff_Nai = (-(i_Na+i_CaNa+i_Na_b+i_ns_Na+(i_NaCa*3.0)+(i_NaK*3.0))*(Am/(V_myo*F))); .units(nmol/mm^3/ms);
+diff_Cai = ((-((i_CaCa+i_p_Ca+i_Ca_b) - i_NaCa)*(Am/(2.0*V_myo*F)))+(i_rel*(V_JSR/V_myo))+((i_leak - i_up)*(V_NSR/V_myo))); .units(nmol/mm^3/ms);
+diff_Ca_JSR = -(i_rel - (i_tr*(V_NSR/V_JSR))); .units(nmol/mm^3/ms);
+diff_Ca_NSR = -((i_leak+i_tr) - i_up); .units(nmol/mm^3/ms);
+diff_Ki = (-(i_CaK+i_K+i_K1+i_Kp+i_ns_K+-(i_NaK*2.0))*(Am/(V_myo*F))); .units(nmol/mm^3/ms);

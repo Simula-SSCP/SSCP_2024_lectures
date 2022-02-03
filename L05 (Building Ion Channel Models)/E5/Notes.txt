@@ -1,0 +1,8 @@
+dats = Activation(P_opt,V,I,step_length)
+opt_model_I = dats['I_peak']
+
+plt.figure()
+plt.plot(V,I,'b-')
+plt.plot(V,opt_model_I,'r-')
+plt.xlabel('Step potential [mV]')
+plt.ylabel('Current (A/F)')

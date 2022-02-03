@@ -1,0 +1,375 @@
+#generated from: grandi_pasqualini_bers_2010.cellml
+V_m; .external(Vm); .nodal();.lookup(-100,100,0.05);
+Iion; .external(); .nodal();
+
+# Constants
+# Constants
+pi = 3.141592653589793238462643383279502884; .units(unitless);
+
+# Initial values
+m_init = 1.405627e-3; .units(unitless);
+h_init = 9.867005e-1; .units(unitless);
+j_init = 9.91562e-1; .units(unitless);
+x_kr_init = 8.641386e-3; .units(unitless);
+x_ks_init = 5.412034e-3; .units(unitless);
+x_to_s_init = 4.051574e-3; .units(unitless);
+y_to_s_init = 9.945511e-1; .units(unitless);
+x_to_f_init = 4.051574e-3; .units(unitless);
+y_to_f_init = 9.945511e-1; .units(unitless);
+d_init = 7.175662e-6; .units(unitless);
+f_init = 1.000681; .units(unitless);
+f_Ca_Bj_init = 2.421991e-2; .units(unitless);
+f_Ca_Bsl_init = 1.452605e-2; .units(unitless);
+Ry_Rr_init = 8.884332e-1; .units(mmol/L);
+Ry_Ro_init = 8.156628e-7; .units(mmol/L);
+Ry_Ri_init = 1.024274e-7; .units(mmol/L);
+Na_Bj_init = 3.539892; .units(mmol/L);
+Na_Bsl_init = 7.720854e-1; .units(mmol/L);
+Tn_CL_init = 8.773191e-3; .units(mmol/L);
+Tn_CHc_init = 1.078283e-1; .units(mmol/L);
+Tn_CHm_init = 1.524002e-2; .units(mmol/L);
+CaM_init = 2.911916e-4; .units(mmol/L);
+Myo_c_init = 1.298754e-3; .units(mmol/L);
+Myo_m_init = 1.381982e-1; .units(mmol/L);
+SRB_init = 2.143165e-3; .units(mmol/L);
+SLL_j_init = 9.566355e-3; .units(mmol/L);
+SLL_sl_init = 1.110363e-1; .units(mmol/L);
+SLH_j_init = 7.347888e-3; .units(mmol/L);
+SLH_sl_init = 7.297378e-2; .units(mmol/L);
+Csqn_b_init = 1.242988; .units(mmol/L);
+Ca_sr_init = 0.1e-1; .units(mmol/L);
+Na_j_init = 9.06; .units(mmol/L);
+Na_sl_init = 9.06; .units(mmol/L);
+Na_i_init = 9.06; .units(mmol/L);
+K_i_init = 120; .units(mmol/L);
+Ca_j_init = 1.737475e-4; .units(mmol/L);
+Ca_sl_init = 1.031812e-4; .units(mmol/L);
+Ca_i_init = 8.597401e-5; .units(mmol/L);
+V_m_init = -8.09763e1; .units(mV);
+
+#parameters
+junctionLength = 160.e-3; .units(umol);
+cellRadius = 10.25; .units(umol);
+GClB = (1.*9.e-3); .units(mS/uF);
+Fjunc = 0.11; .units(unitless);
+ena_junc = ((1./FoRT)*log((Nao/Na_j))); .units(mV);
+KmCai = 3.59e-3; .units(mmol/L);
+koff_tnchmg = 3.33e-3; .units(unitless/ms);
+ksat = 0.32; .units(unitless);
+KmCao = 1.3; .units(mmol/L);
+koff_myomg = 0.057e-3; .units(unitless/ms);
+Bmax_CaM = 24.e-3; .units(mmol/L);
+Bmax_Naj = 7.561; .units(mmol/L);
+KmNaip = 11.; .units(mmol/L);
+KdClCa = 100.e-3; .units(mmol/L);
+Bmax_SLlowsl = ((37.4e-3*Vmyo)/Vsl); .units(mmol/L);
+cellLength = 100.; .units(umol);
+GClCa = (0.5*0.109625); .units(mS/uF);
+Bmax_myosin = 140.e-3; .units(mmol/L);
+kon_tnchmg = 3.e-3; .units(L/mmol/ms);
+koff_tncl = 19.6e-3; .units(unitless/ms);
+J_na_juncsl = 1.8313e-14; .units(L/ms);
+Cao = 1.8; .units(mmol/L);
+Vsr = (0.035*Vcell); .units(L);
+Bmax_SLhighj = (((1.65e-3*Vmyo)/Vjunc)*0.1); .units(mmol/L);
+kon_myomg = 0.0157; .units(L/mmol/ms);
+KmNai = 12.29; .units(mmol/L);
+Cmem = 1.381e-10; .units(F);
+KmNao = 87.5; .units(mmol/L);
+Vsl = (0.02*Vcell); .units(L);
+Kmf = 0.246e-3; .units(mmol/L);
+ek = ((1./FoRT)*log((Ko/K_i))); .units(mV);
+Q10NCX = 1.57; .units(unitless);
+koff_cam = 238.e-3; .units(unitless/ms);
+koff_myoca = 0.46e-3; .units(unitless/ms);
+Vcell = (pi*(cellRadius*cellRadius)*cellLength*1.e-15); .units(L);
+Kmr = 1.7; .units(mmol/L);
+distSLcyto = 0.45; .units(umol);
+ena_sl = ((1./FoRT)*log((Nao/Na_sl))); .units(mV);
+Frdy = 96485.; .units(C/mol);
+Vmyo = (0.65*Vcell); .units(L);
+pNa = (0.5*1.5e-8); .units(cm/s);
+koff_tnchca = 0.032e-3; .units(unitless/ms);
+pNaK = 0.01833; .units(unitless);
+J_ca_juncsl = 8.2413e-13; .units(L/ms);
+Qpow = ((Temp - 310.)/10.); .units(unitless);
+kon_cam = 34.; .units(L/mmol/ms);
+koff_slh = 30.e-3; .units(unitless/ms);
+ecl = ((1./FoRT)*log((Cli/Clo))); .units(mV);
+Q10CaL = 1.8; .units(unitless);
+kiCa = 0.5; .units(L/mmol/ms);
+DnaJuncSL = 1.09e-5; .units(cm^2/s);
+Vmax_SRCaP = 5.3114e-3; .units(mmol/L/ms);
+Bmax_TnClow = 70.e-3; .units(mmol/L);
+IbarSLCaP = 0.0673; .units(uA/uF);
+Q10KmNai = 1.39; .units(unitless);
+Q10SLCaP = 2.35; .units(unitless);
+eca_junc = (((1./FoRT)/2.)*log((Cao/Ca_j))); .units(mV);
+Q10SRCaP = 2.6; .units(unitless);
+Mgi = 1.; .units(mmol/L);
+junctionRadius = 15.e-3; .units(umol);
+kon_myoca = 13.8; .units(L/mmol/ms);
+kon_na = 0.1e-3; .units(L/mmol/ms);
+Clo = 150.; .units(mmol/L);
+J_ca_slmyo = 3.2743e-12; .units(L/ms);
+Cli = 15.; .units(mmol/L);
+distJuncSL = 0.5; .units(umol);
+Fsl_CaL = (1. - Fjunc_CaL); .units(unitless);
+pK = (0.5*2.7e-7); .units(cm/s);
+Bmax_SLlowj = (((4.6e-3*Vmyo)/Vjunc)*0.1); .units(mmol/L);
+kom = 0.06; .units(unitless/ms);
+GCaB = 5.513e-4; .units(mS/uF);
+DcaJuncSL = 1.64e-6; .units(cm^2/s);
+Bmax_Nasl = 1.65; .units(mmol/L);
+koCa = 10.; .units(L^2/mmol^2/ms);
+IbarNCX = (1.*4.5); .units(uA/uF);
+Kdact = 0.15e-3; .units(mmol/L);
+Ko = 5.4; .units(mmol/L);
+Q10NaK = 1.63; .units(unitless);
+J_na_slmyo = 1.6386e-12; .units(L/ms);
+R = 8314.; .units(J/kmol/K);
+GNaB = 0.597e-3; .units(mS/uF);
+kon_slh = 100.; .units(L/mmol/ms);
+kon_sll = 100.; .units(L/mmol/ms);
+kon_tncl = 32.7; .units(L/mmol/ms);
+SAsl = (pi*2.*cellRadius*cellLength); .units(umol^2);
+FoRT = (Frdy/(R*Temp)); .units(unitless/mV);
+kon_sr = 100.; .units(L/mmol/ms);
+Nao = 140.; .units(mmol/L);
+Bmax_Csqn = ((140.e-3*Vmyo)/Vsr); .units(mmol/L);
+kon_csqn = 100.; .units(L/mmol/ms);
+pCa = (0.5*5.4e-4); .units(cm/s);
+eca_sl = (((1./FoRT)/2.)*log((Cao/Ca_sl))); .units(mV);
+KmKo = 1.5; .units(mmol/L);
+gkp = (2.*0.001); .units(mS/uF);
+Fjunc_CaL = 0.9; .units(unitless);
+IbarNaK = (1.*1.8); .units(uA/uF);
+GNa = 23.; .units(mS/uF);
+KmPCa = 0.5e-3; .units(mmol/L);
+Bmax_TnChigh = 140.e-3; .units(mmol/L);
+nu = 0.27; .units(unitless);
+SAjunc = (20150.*pi*2.*junctionLength*junctionRadius); .units(umol^2);
+Temp = 310.; .units(K);
+koff_sll = 1300.e-3; .units(unitless/ms);
+koff_csqn = 65.; .units(unitless/ms);
+Fsl = (1. - Fjunc); .units(unitless);
+koff_sr = 60.e-3; .units(unitless/ms);
+kim = 0.005; .units(unitless/ms);
+Bmax_SR = (19.*0.9e-3); .units(mmol/L);
+ec50SR = 0.45; .units(mmol/L);
+DnaSLcyto = 1.79e-5; .units(cm^2/s);
+kon_tnchca = 2.37; .units(L/mmol/ms);
+hillSRCaP = 1.787; .units(unitless);
+koff_na = 1.e-3; .units(unitless/ms);
+Vjunc = (0.0539*0.01*Vcell); .units(L);
+ks = 25.; .units(unitless/ms);
+Bmax_SLhighsl = ((13.4e-3*Vmyo)/Vsl); .units(mmol/L);
+DcaSLcyto = 1.22e-6; .units(cm^2/s);
+epi = 1.; .units(unitless);
+
+#I_Na
+I_Na = (I_Na_junc+I_Na_sl); .units(uA/uF);
+I_Na_junc = (Fjunc*GNa*(m*m*m)*h*j*(V_m - ena_junc)); .units(uA/uF);
+I_Na_sl = (Fsl*GNa*(m*m*m)*h*j*(V_m - ena_sl)); .units(uA/uF);
+ah = ((V_m>=-40.) ? 0. : (0.057*exp((-(V_m+80.)/6.8)))); .units(unitless);
+tau_h = (1./(ah+bh)); .units(ms);
+bh = ((V_m>=-40.) ? (0.77/(0.13*(1.+exp((-(V_m+10.66)/11.1))))) : ((2.7*exp((0.079*V_m)))+(3.1e5*exp((0.3485*V_m))))); .units(unitless);
+h_inf = (1./((1.+exp(((V_m+71.55)/7.43)))*(1.+exp(((V_m+71.55)/7.43))))); .units(unitless);
+tau_m = ((0.1292*exp(-(((V_m+45.79)/15.54)*((V_m+45.79)/15.54))))+(0.06487*exp(-(((V_m - 4.823)/51.12)*((V_m - 4.823)/51.12))))); .units(ms);
+m_inf = (1./((1.+exp((-(56.86+V_m)/9.03)))*(1.+exp((-(56.86+V_m)/9.03))))); .units(unitless);
+bj = ((V_m>=-40.) ? ((0.6*exp((0.057*V_m)))/(1.+exp((-0.1*(V_m+32.))))) : ((0.02424*exp((-0.01052*V_m)))/(1.+exp((-0.1378*(V_m+40.14)))))); .units(unitless);
+aj = ((V_m>=-40.) ? 0. : ((((-2.5428e4*exp((0.2444*V_m))) - (6.948e-6*exp((-0.04391*V_m))))*(V_m+37.78))/(1.+exp((0.311*(V_m+79.23)))))); .units(unitless);
+tau_j = (1./(aj+bj)); .units(ms);
+j_inf = (1./((1.+exp(((V_m+71.55)/7.43)))*(1.+exp(((V_m+71.55)/7.43))))); .units(unitless);
+
+#I_NaBK
+I_nabk_junc = (Fjunc*GNaB*(V_m - ena_junc)); .units(uA/uF);
+I_nabk_sl = (Fsl*GNaB*(V_m - ena_sl)); .units(uA/uF);
+I_nabk = (I_nabk_junc+I_nabk_sl); .units(uA/uF);
+
+#I_NaK
+fnak = (1./(1.+(0.1245*exp((-0.1*V_m*FoRT)))+(0.0365*sigma*exp((-V_m*FoRT))))); .units(unitless);
+I_nak_junc = (((Fjunc*IbarNaK*fnak*Ko)/(1.+((KmNaip/Na_j)*(KmNaip/Na_j)*(KmNaip/Na_j)*(KmNaip/Na_j))))/(Ko+KmKo)); .units(uA/uF);
+I_nak = (I_nak_junc+I_nak_sl); .units(uA/uF);
+sigma = ((exp((Nao/67.3)) - 1.)/7.); .units(unitless);
+I_nak_sl = (((Fsl*IbarNaK*fnak*Ko)/(1.+((KmNaip/Na_sl)*(KmNaip/Na_sl)*(KmNaip/Na_sl)*(KmNaip/Na_sl))))/(Ko+KmKo)); .units(uA/uF);
+
+#I_Kr
+x_kr_inf = (1./(1.+exp((-(V_m+10.)/5.)))); .units(unitless);
+I_kr = (gkr*x_kr*rkr*(V_m - ek)); .units(uA/uF);
+rkr = (1./(1.+exp(((V_m+74.)/24.)))); .units(unitless);
+gkr = (0.035*sqrt((Ko/5.4))); .units(mS/uF);
+tau_x_kr = ((((550./(1.+exp(((-22. - V_m)/9.))))*6.)/(1.+exp(((V_m - -11.)/9.))))+(230./(1.+exp(((V_m - -40.)/20.))))); .units(ms);
+
+#I_Kp
+kp_kp = (1./(1.+exp((7.488 - (V_m/5.98))))); .units(unitless);
+I_kp = (I_kp_junc+I_kp_sl); .units(uA/uF);
+I_kp_sl = (Fsl*gkp*kp_kp*(V_m - ek)); .units(uA/uF);
+I_kp_junc = (Fjunc*gkp*kp_kp*(V_m - ek)); .units(uA/uF);
+
+#I_Ks
+I_ks_junc = (Fjunc*gks_junc*(x_ks*x_ks)*(V_m - eks)); .units(uA/uF);
+I_ks_sl = (Fsl*gks_sl*(x_ks*x_ks)*(V_m - eks)); .units(uA/uF);
+tau_x_ks = (990.1/(1.+exp((-(V_m+2.436)/14.12)))); .units(ms);
+I_ks = (I_ks_junc+I_ks_sl); .units(uA/uF);
+x_ks_inf = (1./(1.+exp((-(V_m+3.8)/14.25)))); .units(unitless);
+gks_sl = 0.0035; .units(mS/uF);
+gks_junc = 0.0035; .units(mS/uF);
+eks = ((1./FoRT)*log(((Ko+(pNaK*Nao))/(K_i+(pNaK*Na_i))))); .units(mV);
+
+#I_to
+I_to = (I_tos+I_tof); .units(uA/uF);
+I_tof = (GtoFast*x_to_f*y_to_f*(V_m - ek)); .units(uA/uF);
+GtoFast = ((epi==1.) ? (1.*0.13*0.88) : (0.13*0.3*0.036)); .units(mS/uF);
+diff_x_to_f = ((x_to_s_inf - x_to_f)/tauxtof); .units(unitless/ms);
+tauxtof = ((8.5*exp(-(((V_m+45.)/50.)*((V_m+45.)/50.))))+0.5); .units(ms);
+diff_y_to_f = ((y_to_s_inf - y_to_f)/tauytof); .units(unitless/ms);
+tauytof = ((85.*exp((-((V_m+40.)*(V_m+40.))/220.)))+7.); .units(ms);
+I_tos = (GtoSlow*x_to_s*y_to_s*(V_m - ek)); .units(uA/uF);
+GtoSlow = ((epi==1.) ? (1.*0.13*0.12) : (0.13*0.3*0.964)); .units(mS/uF);
+tau_y_to_s = ((800./(1.+exp(((V_m+60.)/10.))))+30.); .units(ms);
+y_to_s_inf = (1./(1.+exp(((V_m+19.5)/5.)))); .units(unitless);
+tau_x_to_s = ((9./(1.+exp(((V_m+3.)/15.))))+0.5); .units(ms);
+x_to_s_inf = (1./(1.+exp((-(V_m - 19.)/13.)))); .units(unitless);
+
+#I_Ki
+I_ki = (1.*0.35*sqrt((Ko/5.4))*kiss*(V_m - ek)); .units(uA/uF);
+aki = (1.02/(1.+exp((0.2385*((V_m - ek) - 59.215))))); .units(unitless);
+bki = (((0.49124*exp((0.08032*((V_m+5.476) - ek))))+exp((0.06175*((V_m - ek) - 594.31))))/(1.+exp((-0.5143*((V_m - ek)+4.753))))); .units(unitless);
+kiss = (aki/(aki+bki)); .units(unitless);
+
+#I_ClCa
+I_ClCa_sl = (((Fsl*GClCa)/(1.+(KdClCa/Ca_sl)))*(V_m - ecl)); .units(uA/uF);
+I_ClCa_junc = (((Fjunc*GClCa)/(1.+(KdClCa/Ca_j)))*(V_m - ecl)); .units(uA/uF);
+I_Clbk = (GClB*(V_m - ecl)); .units(uA/uF);
+I_ClCa = (I_ClCa_junc+I_ClCa_sl); .units(uA/uF);
+
+#I_Ca
+I_Ca = (I_Ca_junc+I_Ca_sl); .units(uA/uF);
+ibark = ((pK*V_m*Frdy*FoRT*((0.75*K_i*exp((V_m*FoRT))) - (0.75*Ko)))/(exp((V_m*FoRT)) - 1.)); .units(uA/uF);
+ibarca_sl = ((pCa*4.*V_m*Frdy*FoRT*((0.341*Ca_sl*exp((2.*V_m*FoRT))) - (0.341*Cao)))/(exp((2.*V_m*FoRT)) - 1.)); .units(uA/uF);
+I_Ca_sl = (Fsl_CaL*ibarca_sl*d*f*((1. - f_Ca_Bsl)+fcaCaMSL)*pow(Q10CaL,Qpow)*0.45*1.); .units(uA/uF);
+diff_f_Ca_Bj = ((((1.7*Ca_j)/1.)*(1. - f_Ca_Bj)) - (11.9e-3*f_Ca_Bj)); .units(unitless/ms);
+I_CaNa_junc = (Fjunc_CaL*ibarna_j*d*f*((1. - f_Ca_Bj)+fcaCaj)*pow(Q10CaL,Qpow)*0.45*1.); .units(uA/uF);
+fcaCaMSL = 0.; .units(unitless);
+diff_f_Ca_Bsl = ((((1.7*Ca_sl)/1.)*(1. - f_Ca_Bsl)) - (11.9e-3*f_Ca_Bsl)); .units(unitless/ms);
+ibarna_j = ((pNa*V_m*Frdy*FoRT*((0.75*Na_j*exp((V_m*FoRT))) - (0.75*Nao)))/(exp((V_m*FoRT)) - 1.)); .units(uA/uF);
+fcaCaj = 0.; .units(unitless);
+I_CaNa = (I_CaNa_junc+I_CaNa_sl); .units(uA/uF);
+ibarna_sl = ((pNa*V_m*Frdy*FoRT*((0.75*Na_sl*exp((V_m*FoRT))) - (0.75*Nao)))/(exp((V_m*FoRT)) - 1.)); .units(uA/uF);
+tau_d = (V_m==-5.)?(-d_inf/6./0.035):((1.*d_inf*(1. - exp((-(V_m+5.)/6.))))/(0.035*(V_m+5.))); .units(ms);
+#tau_d = ((1.*d_inf*(1. - exp((-(V_m+5.)/6.))))/(0.035*(V_m+5.))); .units(ms);
+d_inf = (1./(1.+exp((-(V_m+5.)/6.)))); .units(unitless);
+I_CaK = (ibark*d*f*((Fjunc_CaL*(fcaCaj+(1. - f_Ca_Bj)))+(Fsl_CaL*(fcaCaMSL+(1. - f_Ca_Bsl))))*pow(Q10CaL,Qpow)*0.45*1.); .units(uA/uF);
+ibarca_j = ((pCa*4.*V_m*Frdy*FoRT*((0.341*Ca_j*exp((2.*V_m*FoRT))) - (0.341*Cao)))/(exp((2.*V_m*FoRT)) - 1.)); .units(uA/uF);
+I_Ca_junc = (Fjunc_CaL*ibarca_j*d*f*((1. - f_Ca_Bj)+fcaCaj)*pow(Q10CaL,Qpow)*0.45*1.); .units(uA/uF);
+I_Catot = (I_Ca+I_CaK+I_CaNa); .units(uA/uF);
+f_inf = ((1./(1.+exp(((V_m+35.)/9.))))+(0.6/(1.+exp(((50. - V_m)/20.))))); .units(unitless);
+tau_f = (1./((0.0197*exp(-((0.0337*(V_m+14.5))*(0.0337*(V_m+14.5)))))+0.02)); .units(ms);
+I_CaNa_sl = (Fsl_CaL*ibarna_sl*d*f*((1. - f_Ca_Bsl)+fcaCaMSL)*pow(Q10CaL,Qpow)*0.45*1.); .units(uA/uF);
+
+#I_NCX
+Ka_sl = (1./(1.+((Kdact/Ca_sl)*(Kdact/Ca_sl)))); .units(unitless);
+I_ncx_junc = (((Fjunc*IbarNCX*pow(Q10NCX,Qpow)*Ka_junc*(s1_junc - s2_junc))/s3_junc)/(1.+(ksat*exp(((nu - 1.)*V_m*FoRT))))); .units(uA/uF);
+s1_junc = (exp((nu*V_m*FoRT))*(Na_j*Na_j*Na_j)*Cao); .units(mmol^4/L^4);
+s2_junc = (exp(((nu - 1.)*V_m*FoRT))*(Nao*Nao*Nao)*Ca_j); .units(mmol^4/L^4);
+s3_junc = ((KmCai*(Nao*Nao*Nao)*(1.+((Na_j/KmNai)*(Na_j/KmNai)*(Na_j/KmNai))))+((KmNao*KmNao*KmNao)*Ca_j*(1.+(Ca_j/KmCai)))+(KmCao*(Na_j*Na_j*Na_j))+((Na_j*Na_j*Na_j)*Cao)+((Nao*Nao*Nao)*Ca_j)); .units(mmol^4/L^4);
+I_ncx = (I_ncx_junc+I_ncx_sl); .units(uA/uF);
+s2_sl = (exp(((nu - 1.)*V_m*FoRT))*(Nao*Nao*Nao)*Ca_sl); .units(mmol^4/L^4);
+I_ncx_sl = (((Fsl*IbarNCX*pow(Q10NCX,Qpow)*Ka_sl*(s1_sl - s2_sl))/s3_sl)/(1.+(ksat*exp(((nu - 1.)*V_m*FoRT))))); .units(uA/uF);
+s3_sl = ((KmCai*(Nao*Nao*Nao)*(1.+((Na_sl/KmNai)*(Na_sl/KmNai)*(Na_sl/KmNai))))+((KmNao*KmNao*KmNao)*Ca_sl*(1.+(Ca_sl/KmCai)))+(KmCao*(Na_sl*Na_sl*Na_sl))+((Na_sl*Na_sl*Na_sl)*Cao)+((Nao*Nao*Nao)*Ca_sl)); .units(mmol^4/L^4);
+s1_sl = (exp((nu*V_m*FoRT))*(Na_sl*Na_sl*Na_sl)*Cao); .units(mmol^4/L^4);
+Ka_junc = (1./(1.+((Kdact/Ca_j)*(Kdact/Ca_j)))); .units(unitless);
+
+#I_PCa
+I_pca = (I_pca_junc+I_pca_sl); .units(uA/uF);
+I_pca_sl = ((Fsl*pow(Q10SLCaP,Qpow)*IbarSLCaP*pow(Ca_sl,1.6))/(pow(KmPCa,1.6)+pow(Ca_sl,1.6))); .units(uA/uF);
+I_pca_junc = ((Fjunc*pow(Q10SLCaP,Qpow)*IbarSLCaP*pow(Ca_j,1.6))/(pow(KmPCa,1.6)+pow(Ca_j,1.6))); .units(uA/uF);
+
+#I_CaBK
+I_cabk_sl = (Fsl*GCaB*(V_m - eca_sl)); .units(uA/uF);
+I_cabk_junc = (Fjunc*GCaB*(V_m - eca_junc)); .units(uA/uF);
+I_cabk = (I_cabk_junc+I_cabk_sl); .units(uA/uF);
+
+#SR_Fluxes
+J_serca = ((pow(Q10SRCaP,Qpow)*Vmax_SRCaP*(pow((Ca_i/Kmf),hillSRCaP) - pow((Ca_sr/Kmr),hillSRCaP)))/(1.+pow((Ca_i/Kmf),hillSRCaP)+pow((Ca_sr/Kmr),hillSRCaP))); .units(mmol/L/ms);
+diff_Ry_Ro = (((koSRCa*(Ca_j*Ca_j)*Ry_Rr) - (kom*Ry_Ro)) - ((kiSRCa*Ca_j*Ry_Ro) - (kim*Ry_Ri))); .units(mmol/L/ms);
+J_SRCarel = (((ks*Ry_Ro)/1.)*(Ca_sr - Ca_j)); .units(mmol/L/ms);
+kCaSR = (MaxSR - ((MaxSR - MinSR)/(1.+pow((ec50SR/Ca_sr),2.5)))); .units(unitless);
+diff_Ry_Ri = (((kiSRCa*Ca_j*Ry_Ro) - (kim*Ry_Ri)) - ((kom*Ry_Ri) - (koSRCa*(Ca_j*Ca_j)*RI))); .units(mmol/L/ms);
+kiSRCa = (kiCa*kCaSR); .units(L/mmol/ms);
+MinSR = 1.; .units(unitless);
+MaxSR = 15.; .units(unitless);
+J_SRleak = (5.348e-6*(Ca_sr - Ca_j)); .units(mmol/L/ms);
+diff_Ry_Rr = (((kim*RI) - (kiSRCa*Ca_j*Ry_Rr)) - ((koSRCa*(Ca_j*Ca_j)*Ry_Rr) - (kom*Ry_Ro))); .units(mmol/L/ms);
+RI = (((1. - Ry_Rr) - Ry_Ro) - Ry_Ri); .units(mmol/L);
+koSRCa = (koCa/kCaSR); .units(L^2/mmol^2/ms);
+group {
+    Ry_Ri;
+    Ry_Ro;
+    Ry_Rr;
+}.method(markov_be);
+
+#Na_Buffers
+diff_Na_Bj = dNa_Bj_dt; .units(mmol/L/ms);
+dNa_Bj_dt = ((kon_na*Na_j*(Bmax_Naj - Na_Bj)) - (koff_na*Na_Bj)); .units(mmol/L/ms);
+dNa_Bsl_dt = ((kon_na*Na_sl*(Bmax_Nasl - Na_Bsl)) - (koff_na*Na_Bsl)); .units(mmol/L/ms);
+diff_Na_Bsl = dNa_Bsl_dt; .units(mmol/L/ms);
+
+#Cytosolic_Ca_Buffers
+diff_Tn_CL = ((kon_tncl*Ca_i*(Bmax_TnClow - Tn_CL)) - (koff_tncl*Tn_CL)); .units(mmol/L/ms);
+J_CaB_cytosol = (((((((((((((kon_tncl*Ca_i*(Bmax_TnClow - Tn_CL)) - (koff_tncl*Tn_CL))+(kon_tnchca*Ca_i*((Bmax_TnChigh - Tn_CHc) - Tn_CHm))) - (koff_tnchca*Tn_CHc))+(kon_tnchmg*Mgi*((Bmax_TnChigh - Tn_CHc) - Tn_CHm))) - (koff_tnchmg*Tn_CHm))+(kon_cam*Ca_i*(Bmax_CaM - CaM))) - (koff_cam*CaM))+(kon_myoca*Ca_i*((Bmax_myosin - Myo_c) - Myo_m))) - (koff_myoca*Myo_c))+(kon_myomg*Mgi*((Bmax_myosin - Myo_c) - Myo_m))) - (koff_myomg*Myo_m))+((kon_sr*Ca_i*(Bmax_SR - SRB)) - (koff_sr*SRB))); .units(mmol/L/ms);
+diff_Tn_CHc = ((kon_tnchca*Ca_i*((Bmax_TnChigh - Tn_CHc) - Tn_CHm)) - (koff_tnchca*Tn_CHc)); .units(mmol/L/ms);
+diff_Myo_c = ((kon_myoca*Ca_i*((Bmax_myosin - Myo_c) - Myo_m)) - (koff_myoca*Myo_c)); .units(mmol/L/ms);
+diff_SRB = ((kon_sr*Ca_i*(Bmax_SR - SRB)) - (koff_sr*SRB)); .units(mmol/L/ms);
+diff_CaM = ((kon_cam*Ca_i*(Bmax_CaM - CaM)) - (koff_cam*CaM)); .units(mmol/L/ms);
+diff_Tn_CHm = ((kon_tnchmg*Mgi*((Bmax_TnChigh - Tn_CHc) - Tn_CHm)) - (koff_tnchmg*Tn_CHm)); .units(mmol/L/ms);
+diff_Myo_m = ((kon_myomg*Mgi*((Bmax_myosin - Myo_c) - Myo_m)) - (koff_myomg*Myo_m)); .units(mmol/L/ms);
+
+#Junctional_and_SL_Ca_Buffers
+diff_SLH_sl = ((kon_slh*Ca_sl*(Bmax_SLhighsl - SLH_sl)) - (koff_slh*SLH_sl)); .units(mmol/L/ms);
+J_CaB_sl = (((kon_sll*Ca_sl*(Bmax_SLlowsl - SLL_sl)) - (koff_sll*SLL_sl))+((kon_slh*Ca_sl*(Bmax_SLhighsl - SLH_sl)) - (koff_slh*SLH_sl))); .units(mmol/L/ms);
+diff_SLH_j = ((kon_slh*Ca_j*(Bmax_SLhighj - SLH_j)) - (koff_slh*SLH_j)); .units(mmol/L/ms);
+diff_SLL_j = ((kon_sll*Ca_j*(Bmax_SLlowj - SLL_j)) - (koff_sll*SLL_j)); .units(mmol/L/ms);
+diff_SLL_sl = ((kon_sll*Ca_sl*(Bmax_SLlowsl - SLL_sl)) - (koff_sll*SLL_sl)); .units(mmol/L/ms);
+J_CaB_junction = (((kon_sll*Ca_j*(Bmax_SLlowj - SLL_j)) - (koff_sll*SLL_j))+((kon_slh*Ca_j*(Bmax_SLhighj - SLH_j)) - (koff_slh*SLH_j))); .units(mmol/L/ms);
+
+#SR_Ca_Concentrations
+diff_Ca_sr = ((J_serca - (((J_SRleak*Vmyo)/Vsr)+J_SRCarel)) - ((kon_csqn*Ca_sr*(Bmax_Csqn - Csqn_b)) - (koff_csqn*Csqn_b))); .units(mmol/L/ms);
+diff_Csqn_b = ((kon_csqn*Ca_sr*(Bmax_Csqn - Csqn_b)) - (koff_csqn*Csqn_b)); .units(mmol/L/ms);
+
+#Na_Concentrations
+I_Na_tot_sl = (I_Na_sl+I_nabk_sl+(3.*I_ncx_sl)+(3.*I_nak_sl)+I_CaNa_sl); .units(uA/uF);
+diff_Na_j = ((((-I_Na_tot_junc*Cmem)/(Vjunc*Frdy))+((J_na_juncsl/Vjunc)*(Na_sl - Na_j))) - dNa_Bj_dt); .units(mmol/L/ms);
+diff_Na_i = ((J_na_slmyo/Vmyo)*(Na_sl - Na_i)); .units(mmol/L/ms);
+I_Na_tot_junc2 = ((3.*I_ncx_junc)+(3.*I_nak_junc)+I_CaNa_junc); .units(uA/uF);
+I_Na_tot_junc = (I_Na_junc+I_nabk_junc+(3.*I_ncx_junc)+(3.*I_nak_junc)+I_CaNa_junc); .units(uA/uF);
+diff_Na_sl = ((((-I_Na_tot_sl*Cmem)/(Vsl*Frdy))+((J_na_juncsl/Vsl)*(Na_j - Na_sl))+((J_na_slmyo/Vsl)*(Na_i - Na_sl))) - dNa_Bsl_dt); .units(mmol/L/ms);
+I_Na_tot_sl2 = ((3.*I_ncx_sl)+(3.*I_nak_sl)+I_CaNa_sl); .units(uA/uF);
+
+#K_Concentration
+I_K_tot = (((I_to+I_kr+I_ks+I_ki) - (2.*I_nak))+I_CaK+I_kp); .units(uA/uF);
+diff_K_i = 0.; .units(mmol/L/ms);
+
+#Ca_Concentrations
+I_Ca_tot_junc = ((I_Ca_junc+I_cabk_junc+I_pca_junc) - (2.*I_ncx_junc)); .units(uA/uF);
+I_Ca_tot_sl = ((I_Ca_sl+I_cabk_sl+I_pca_sl) - (2.*I_ncx_sl)); .units(uA/uF);
+diff_Ca_sl = ((((-I_Ca_tot_sl*Cmem)/(Vsl*2.*Frdy))+((J_ca_juncsl/Vsl)*(Ca_j - Ca_sl))+((J_ca_slmyo/Vsl)*(Ca_i - Ca_sl))) - J_CaB_sl); .units(mmol/L/ms);
+diff_Ca_i = ((((-J_serca*Vsr)/Vmyo) - J_CaB_cytosol)+((J_ca_slmyo/Vmyo)*(Ca_sl - Ca_i))); .units(mmol/L/ms);
+diff_Ca_j = (((((-I_Ca_tot_junc*Cmem)/(Vjunc*2.*Frdy))+((J_ca_juncsl/Vjunc)*(Ca_sl - Ca_j))) - J_CaB_junction)+((J_SRCarel*Vsr)/Vjunc)+((J_SRleak*Vmyo)/Vjunc)); .units(mmol/L/ms);
+
+group {
+    Ca_i;
+    Ca_j;
+    Ca_sl;
+    Ca_sr;
+    f_Ca_Bj;
+    f_Ca_Bsl;
+}.method(cvode);
+
+#membrane_potential
+Iion = -(-(I_tot - 0)); .units(uA/uF);
+I_tot = (I_Na_tot+I_Cl_tot+I_Ca_tot+I_K_tot); .units(uA/uF);
+I_Na_tot = (I_Na_tot_junc+I_Na_tot_sl); .units(uA/uF);
+I_Cl_tot = (I_ClCa+I_Clbk); .units(uA/uF);
+I_Ca_tot = (I_Ca_tot_junc+I_Ca_tot_sl); .units(uA/uF);

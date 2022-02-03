@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Xdmf Version="3.0">
+  <Domain>
+    <Grid GridType="Collection" CollectionType="Temporal" Name="displacement">
+      <Grid Name="displacement_0" GridType="Uniform">
+        <Topology NumberOfElements="540" TopologyType="Tetrahedron" NodesPerElement="4">
+          <DataItem Dimensions="540 4" NumberType="UInt" Format="HDF">du.h5:displacement/displacement_0/mesh/topology</DataItem>
+        </Topology>
+        <Geometry GeometryType="XYZ">
+          <DataItem Dimensions="176 3" Format="HDF">du.h5:displacement/displacement_0/mesh/geometry</DataItem>
+        </Geometry>
+        <Time Value="0.000000" />
+        <Attribute ItemType="FiniteElementFunction" ElementFamily="CG" ElementDegree="1" ElementCell="tetrahedron" Name="displacement" Center="Other" AttributeType="Vector">
+          <DataItem Dimensions="6480 1" NumberType="UInt" Format="HDF">du.h5:displacement/displacement_0/cell_dofs</DataItem>
+          <DataItem Dimensions="528 1" NumberType="Float" Format="HDF">du.h5:displacement/displacement_0/vector</DataItem>
+          <DataItem Dimensions="541 1" NumberType="UInt" Format="HDF">du.h5:displacement/displacement_0/x_cell_dofs</DataItem>
+          <DataItem Dimensions="540 1" NumberType="UInt" Format="HDF">du.h5:displacement/displacement_0/cells</DataItem>
+        </Attribute>
+      </Grid>
+    </Grid>
+  </Domain>
+</Xdmf>
