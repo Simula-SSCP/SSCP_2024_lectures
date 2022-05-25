@@ -38,8 +38,9 @@ class VoltageClampWidget:
         self.Cm = Cm
         self.Rs = Rs
         T = (0, 10)
+        t = np.linspace(0, 10, 101)
         V0 = (-80,)
-        solution = solve_ivp(self.dV_dt, T, V0, max_step=0.01)
+        solution = solve_ivp(self.dV_dt, T, V0, t_eval=t, max_step=0.01)
         
         t = solution.t
         V, = solution.y
@@ -48,8 +49,9 @@ class VoltageClampWidget:
 
         # Potential Plot
         ax1.plot(t, V, label='Actual')
-        ax1.plot(t, self.V_target(t), label='Target')
+        ax1.step(t, self.V_target(t), label='Target')
         ax1.set_ylabel('Mem. Potential [mV]')
+        ax1.axis((0, 10, -85, -35))
         ax1.legend()
 
         # I_cap plot
@@ -96,12 +98,14 @@ class MembraneWidget():
         V, = solution.y
 
         plt.plot(t, V, linewidth=2.0)
+        plt.title(f"Potential after 20 ms: {V[-1]:.1f} mV")
         plt.axhline(114, alpha=0.5, color='black', linestyle='--')
         plt.axhline(70, alpha=0.5, color='black', linestyle='--')
         plt.axhline(-86, alpha=0.5, color='black', linestyle='--')
         plt.xlabel('Time [ms]')
         plt.ylabel('Mem. Potential [mV]')
         plt.axis((0., 20, -90, 120))
+        plt.xticks(range(0, 25, 5))
         plt.show()
 
     def display(self):
