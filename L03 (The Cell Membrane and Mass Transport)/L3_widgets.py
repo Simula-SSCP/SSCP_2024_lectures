@@ -86,7 +86,7 @@ class MembraneWidget():
         return -(g_Na*(V-E_Na) + g_K*(V - E_K) + g_Ca*(V - E_Ca))/self.Cm
 
     def solve_and_plot(self, g_Na, g_Ca, g_K):
-        self.g_Na = g_Na*1e-3
+        self.g_Na = g_Na*1e-3ø
         self.g_Ca = g_Ca*1e-3
         self.g_K = g_K*1e-3
 
