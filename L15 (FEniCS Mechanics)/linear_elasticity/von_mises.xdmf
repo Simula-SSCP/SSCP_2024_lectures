@@ -3,18 +3,18 @@
   <Domain>
     <Grid GridType="Collection" CollectionType="Temporal" Name="stress">
       <Grid Name="stress_0" GridType="Uniform">
-        <Topology NumberOfElements="540" TopologyType="Tetrahedron" NodesPerElement="4">
-          <DataItem Dimensions="540 4" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/mesh/topology</DataItem>
+        <Topology NumberOfElements="200" TopologyType="Triangle" NodesPerElement="3">
+          <DataItem Dimensions="200 3" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/mesh/topology</DataItem>
         </Topology>
-        <Geometry GeometryType="XYZ">
-          <DataItem Dimensions="176 3" Format="HDF">von_mises.h5:stress/stress_0/mesh/geometry</DataItem>
+        <Geometry GeometryType="XY">
+          <DataItem Dimensions="121 2" Format="HDF">von_mises.h5:stress/stress_0/mesh/geometry</DataItem>
         </Geometry>
         <Time Value="0.000000" />
-        <Attribute ItemType="FiniteElementFunction" ElementFamily="CG" ElementDegree="1" ElementCell="tetrahedron" Name="stress" Center="Other" AttributeType="Scalar">
-          <DataItem Dimensions="2160 1" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/cell_dofs</DataItem>
-          <DataItem Dimensions="176 1" NumberType="Float" Format="HDF">von_mises.h5:stress/stress_0/vector</DataItem>
-          <DataItem Dimensions="541 1" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/x_cell_dofs</DataItem>
-          <DataItem Dimensions="540 1" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/cells</DataItem>
+        <Attribute ItemType="FiniteElementFunction" ElementFamily="CG" ElementDegree="1" ElementCell="triangle" Name="stress" Center="Other" AttributeType="Scalar">
+          <DataItem Dimensions="600 1" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/cell_dofs</DataItem>
+          <DataItem Dimensions="121 1" NumberType="Float" Format="HDF">von_mises.h5:stress/stress_0/vector</DataItem>
+          <DataItem Dimensions="201 1" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/x_cell_dofs</DataItem>
+          <DataItem Dimensions="200 1" NumberType="UInt" Format="HDF">von_mises.h5:stress/stress_0/cells</DataItem>
         </Attribute>
       </Grid>
     </Grid>
