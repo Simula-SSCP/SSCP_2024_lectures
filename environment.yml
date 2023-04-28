@@ -1,0 +1,11 @@
+name: sscp
+channels:
+  - conda-forge
+dependencies:
+  - mpich
+  - ipywidgets
+  - jupyter-book
+  - matplotlib-base
+  - mpi4py
+  - numpy
+  - fenics-dolfinx
