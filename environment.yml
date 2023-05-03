@@ -2,21 +2,21 @@ name: mpi-tutorial
 channels:
   - conda-forge
 dependencies:
-  - altair
-  - cycler
-  - mpich
-  - ipyparallel>=8.6
-  - ipywidgets
-  - jupyter-book
-  - matplotlib-base
-  - mpi4py
-  - numpy
-  - pandas
-  - pyvista
-  - autopep8
-  - fenics-dolfinx
-  - petsc4py
-  - panel
+  # - altair
+  # - cycler
+  # - mpich
+  # - ipyparallel>=8.6
+  # - ipywidgets
+  # - jupyter-book
+  # - matplotlib-base
+  # - mpi4py
+  # - numpy
+  # - pandas
+  # - pyvista
+  # - autopep8
+  # - fenics-dolfinx
+  # - petsc4py
+  # - panel
 
 # # Should be a copy of https://github.com/minrk/simula-summer-school/blob/2023/image/environment.yml
 # name: sscp-env
@@ -30,50 +30,50 @@ dependencies:
 #   - conda
 
 #   # scientific packages
-#   - fenics=2019.1.0
-#   - mshr=2019.1.0
-#   - sympy
-#   - neuron
-#   # lfpy/pytorch seem to have conflicts
-#   # - lfpy=2.2.5
-#   - lfpy
-#   - python-neo
-#   - browndye
+  - fenics=2019.1.0
+  - mshr=2019.1.0
+  - sympy
+  - neuron
+  # lfpy/pytorch seem to have conflicts
+  # - lfpy=2.2.5
+  - lfpy
+  - python-neo
+  - browndye
 
-#   # packaged in this repo:
-#   - "minrk::opencarp=12"
-#   # TODO:
-#   # - carputils?
+  # packaged in this repo:
+  - "minrk::opencarp=12"
+  # TODO:
+  # - carputils?
 
-#   # basic Python
-#   - python=3.10
-#   - black
-#   - isort
-#   - matplotlib-base
-#   - cython
-#   - scipy
-#   - seaborn
-#   - numba
-#   - numpy
-#   - pandas
-#   - altair
-#   - scikit-learn
-#   - pytorch-cpu
-#   - pytest
-#   - wurlitzer
+  # basic Python
+  - python=3.10
+  - black
+  - isort
+  - matplotlib-base
+  - cython
+  - scipy
+  - seaborn
+  - numba
+  - numpy
+  - pandas
+  - altair
+  - scikit-learn
+  - pytorch-cpu
+  - pytest
+  - wurlitzer
 
-#   # IPython/Jupyter
-#   # - nodejs=14
-#   - jupyterlab
-#   - jupyterhub-base=4.0.0
-#   - jupyterlab_code_formatter
-#   - jupyterlab-git
-#   - nbclassic
-#   - nbdime
-#   - notebook
-#   - ipykernel
-#   - ipywidgets
-#   - nbgitpuller
+  # IPython/Jupyter
+  # - nodejs=14
+  - jupyterlab
+  - jupyterhub-base=4.0.0
+  - jupyterlab_code_formatter
+  - jupyterlab-git
+  - nbclassic
+  - nbdime
+  - notebook
+  - ipykernel
+  - ipywidgets
+  - nbgitpuller
   
-#   # Webpage
-#   - jupyter-book
+  # Webpage
+  - jupyter-book
