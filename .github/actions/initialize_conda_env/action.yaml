@@ -17,7 +17,7 @@ runs:
       with:
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          activate-environment: sscp-env
+          activate-environment: mpi-tutorial
           python-version: ${{ inputs.python-version }}
           use-mamba: true
           # uncomment to install env in one go (without caching)
@@ -32,7 +32,7 @@ runs:
       uses: actions/cache@v3
       id: cache-env
       with:
-        path: ${{ env.CONDA }}/envs/sscp-env
+        path: ${{ env.CONDA }}/envs/mpi-tutorial
         key:
           conda-env-${{ steps.get-date.outputs.today }}-${{ inputs.python-version }}-${{ hashFiles('environment.yml') }}-${{ hashFiles('.github/actions/install-dependencies/**') }}
 
@@ -45,15 +45,11 @@ runs:
     - name: Update environment
       if: steps.cache-env.outputs.cache-hit != 'true'
       run:
-          mamba env update -n sscp-env -f environment.yml
-      shell: bash -el {0}
-    - name:
-      run: env | grep CONDA
+          mamba env update -n mpi-tutorial -f environment.yml
       shell: bash -el {0}
 
     - name: List environment
       run:
-          mamba list -n sscp-env
+          mamba list -n mpi-tutorial
       shell: bash -el {0}
-
 
