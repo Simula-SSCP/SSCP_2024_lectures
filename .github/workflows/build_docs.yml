@@ -12,6 +12,14 @@ on:
   workflow_dispatch:
 
 
+env:
+  DEB_PYTHON_INSTALL_LAYOUT: deb_system
+  IPP_NONINTERACTIVE: "1"
+
+defaults:
+  run:
+    shell: bash -el {0}
+    
 jobs:
   build:
     runs-on: ubuntu-latest
