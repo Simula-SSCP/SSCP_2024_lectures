@@ -165,3 +165,9 @@ cython_debug/
 
 # Jupyter-book
 _build/
+
+
+# FEniCS output files
+*.xdmf
+*.h5
+*.gif
