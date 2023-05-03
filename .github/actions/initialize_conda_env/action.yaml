@@ -53,11 +53,4 @@ runs:
           mamba list -n sscp-env
       shell: bash -el {0}
 
-    
-    - name: Install pyvista dependencies
-      shell: bash -el {0}
-      run: |
-        apt-get update
-        apt-get install -y libgl1-mesa-glx xvfb
-
 
