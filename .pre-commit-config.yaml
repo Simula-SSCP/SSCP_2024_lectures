@@ -1,0 +1,6 @@
+repos:
+
+  - repo: https://github.com/jorgensd/modify_jupter_cell_tags
+    rev: v0.2.3
+    hooks:
+      - id: replace-jupyter-source-metadata
