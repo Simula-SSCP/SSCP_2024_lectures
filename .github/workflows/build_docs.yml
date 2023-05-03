@@ -16,8 +16,10 @@ env:
   DEB_PYTHON_INSTALL_LAYOUT: deb_system
   IPP_NONINTERACTIVE: "1"
 
+
 defaults:
   run:
+    # Added so that we can execute commands from the conda env
     shell: bash -el {0}
     
 jobs:
