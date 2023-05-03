@@ -47,6 +47,9 @@ runs:
       run:
           mamba env update -n sscp-env -f environment.yml
       shell: bash -el {0}
+    - name:
+      run: env | grep CONDA
+      shell: bash -el {0}
 
     - name: List environment
       run:
