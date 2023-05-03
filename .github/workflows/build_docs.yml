@@ -1,0 +1,38 @@
+name: Build lectures webpage
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+  # This workflow can be executed inside another workfow file
+  workflow_call:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/scientificcomputing/fenics:2023-04-21
+    env:
+      # Directory that will be uploaded as an artifact
+      PUBLISH_DIR: ./_build/html
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install jupyter-book
+        run: python3 -m pip install jupyter-book
+
+      - name: Build docs
+        run: 	jupyter book build -W .
+
+      - name: Upload documentation as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: documentation
+          path: ${{ env.PUBLISH_DIR }}
+          if-no-files-found: error
+  
