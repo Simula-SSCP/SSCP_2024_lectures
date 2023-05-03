@@ -2,6 +2,10 @@
 
 This is the web-page of the Simula Summer School in Computational Physiology
 
+## Add section to web-page
+
+To add a notebook or markdown document to the web-page, please open [_toc.yml](_toc.yml), create a new section if needed and add the file-name (without file extension)
+
 
 ## Hide input/output for students
 
