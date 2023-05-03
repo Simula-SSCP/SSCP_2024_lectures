@@ -1,38 +1,29 @@
-name: Build lectures webpage
+name: Build lecture webpage
 
 on:
-  pull_request:
-    branches:
-      - "main"
-
-  # This workflow can be executed inside another workflow file
-  workflow_call:
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+  workflow_call:
+  pull_request:
+    branches: ["main"]
 
 env:
   DEB_PYTHON_INSTALL_LAYOUT: deb_system
   IPP_NONINTERACTIVE: "1"
 
-
 defaults:
   run:
-    # Added so that we can execute commands from the conda env
     shell: bash -el {0}
-    
+
 jobs:
-  build:
+  build-book:
     runs-on: ubuntu-latest
-    env:
-      # Directory that will be uploaded as an artifact
-      PUBLISH_DIR: ./_build/html
+    container: ubuntu:22.04
 
     steps:
+
       - uses: actions/checkout@v3
 
-      - name: Install deps via conda
+      - name: Install common packages
         uses: ./.github/actions/initialize_conda_env
 
       - name: cache executed notebooks
@@ -41,16 +32,20 @@ jobs:
           path: _build/.jupyter_cache
           key: jupyter-cache-${{ hashFiles('environment.yml') }}
 
-      - name: Install jupyter-book
-        run: python3 -m pip install jupyter-book
+      - name: Build the book
+        run:
+          jupyter-book build . -W
 
-      - name: Build docs
-        run: 	jupyter book build -W .
-
-      - name: Upload documentation as artifact
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
+        # always upload artifact, which can include error messages
+        if: always()
         with:
           name: documentation
-          path: ${{ env.PUBLISH_DIR }}
+          path: ./_build/html
+          retention-days: 2
           if-no-files-found: error
-  
+
+      - name: Show error reports
+        if: failure()
+        run: |
+          find _build/html/reports -type f -print -exec cat {} \;

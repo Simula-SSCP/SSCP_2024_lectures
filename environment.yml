@@ -1,8 +1,9 @@
 # Should be a copy of https://github.com/minrk/simula-summer-school/blob/2023/image/environment.yml
-name: test-env
+name: sscp-env
 channels:
   - conda-forge
   - minrk
+
 dependencies:
   # basics, since this is starting from micromamba
   - mamba
@@ -53,3 +54,6 @@ dependencies:
   - ipykernel
   - ipywidgets
   - nbgitpuller
+  
+  # Webpage
+  - jupyter-book

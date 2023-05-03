@@ -17,7 +17,7 @@ runs:
       with:
           miniforge-variant: Mambaforge
           miniforge-version: latest
-          activate-environment: test-env
+          activate-environment: sscp-env
           python-version: ${{ inputs.python-version }}
           use-mamba: true
           # uncomment to install env in one go (without caching)
@@ -32,7 +32,7 @@ runs:
       uses: actions/cache@v3
       id: cache-env
       with:
-        path: ${{ env.CONDA }}/envs/test-env
+        path: ${{ env.CONDA }}/envs/sscp-env
         key:
           conda-env-${{ steps.get-date.outputs.today }}-${{ inputs.python-version }}-${{ hashFiles('environment.yml') }}-${{ hashFiles('.github/actions/install-dependencies/**') }}
 
@@ -45,10 +45,19 @@ runs:
     - name: Update environment
       if: steps.cache-env.outputs.cache-hit != 'true'
       run:
-          mamba env update -n test-env -f environment.yml
+          mamba env update -n sscp-env -f environment.yml
       shell: bash -el {0}
 
     - name: List environment
       run:
-          mamba list -n test-env
+          mamba list -n sscp-env
       shell: bash -el {0}
+
+    
+    - name: Install pyvista dependencies
+      shell: bash -el {0}
+      run: |
+        apt-get update
+        apt-get install -y libgl1-mesa-glx xvfb
+
+
