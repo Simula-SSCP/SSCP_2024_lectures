@@ -15,13 +15,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/scientificcomputing/fenics:2023-04-21
     env:
       # Directory that will be uploaded as an artifact
       PUBLISH_DIR: ./_build/html
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install deps via conda
+        uses: ./.github/actions/initialize_conda_env
+
+      - name: cache executed notebooks
+        uses: actions/cache@v3
+        with:
+          path: _build/.jupyter_cache
+          key: jupyter-cache-${{ hashFiles('environment.yml') }}
 
       - name: Install jupyter-book
         run: python3 -m pip install jupyter-book
