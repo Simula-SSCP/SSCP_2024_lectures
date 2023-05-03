@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
 
-  # This workflow can be executed inside another workfow file
+  # This workflow can be executed inside another workflow file
   workflow_call:
 
   # Allows you to run this workflow manually from the Actions tab
