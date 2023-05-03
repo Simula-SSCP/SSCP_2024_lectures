@@ -1,33 +1,11 @@
-name: mpi-tutorial
+# Should be more or less a copy of https://github.com/minrk/simula-summer-school/blob/2023/image/environment.yml
+name: sscp-env
 channels:
   - conda-forge
+  - minrk
+
 dependencies:
-  # - altair
-  # - cycler
-  # - mpich
-  # - ipyparallel>=8.6
-  # - ipywidgets
-  # - jupyter-book
-  # - matplotlib-base
-  # - mpi4py
-  # - numpy
-  # - pandas
-  # - pyvista
-  # - autopep8
-  # - fenics-dolfinx
-  # - petsc4py
-  # - panel
 
-# # Should be a copy of https://github.com/minrk/simula-summer-school/blob/2023/image/environment.yml
-# name: sscp-env
-# channels:
-#   - conda-forge
-#   - minrk
-
-# dependencies:
-#   # basics, since this is starting from micromamba
-#   - mamba
-#   - conda
 
 #   # scientific packages
   - fenics=2019.1.0
