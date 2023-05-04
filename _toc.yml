@@ -9,3 +9,7 @@ parts:
   - caption: FEniCS Electrophysiology
     chapters:
       - file: "L13 (FEniCS Electrophysiology)/L05 - FitzhughNagumo-Solution.ipynb"
+
+  - caption: FEniCS Mechanics
+    chapters:
+      - file: "L14 (FEniCS Mechanics)/L13.ipynb"
