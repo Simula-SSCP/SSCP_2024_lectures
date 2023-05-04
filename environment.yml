@@ -55,3 +55,6 @@ dependencies:
   
   # Webpage
   - jupyter-book
+  
+  # Progress-bars
+  - tqdm
