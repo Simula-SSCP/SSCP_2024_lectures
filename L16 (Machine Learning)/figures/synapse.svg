@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="1200" height="600">
+    <!-- Background -->
+    <rect x="0" y="0" width="600" height="300" fill="#F0F0F0"/>
+
+    <!-- Pre-synaptic terminal (axon) -->
+    <rect x="20" y="120" width="160" height="60" fill="#B0B0B0" stroke="black" stroke-width="2"/>
+
+    <!-- Synaptic vesicles (small circles inside the pre-synaptic terminal) -->
+    <circle cx="60" cy="130" r="15" fill="#337ab7" stroke="black" stroke-width="2"/>
+    <circle cx="100" cy="130" r="15" fill="#337ab7" stroke="black" stroke-width="2"/>
+    <circle cx="140" cy="130" r="15" fill="#337ab7" stroke="black" stroke-width="2"/>
+    <circle cx="60" cy="160" r="15" fill="#337ab7" stroke="black" stroke-width="2"/>
+    <circle cx="100" cy="160" r="15" fill="#337ab7" stroke="black" stroke-width="2"/>
+    <circle cx="140" cy="160" r="15" fill="#337ab7" stroke="black" stroke-width="2"/>
+
+    <!-- Synaptic cleft (lines) -->
+    <line x1="180" y1="120" x2="220" y2="120" stroke="black" stroke-width="2"/>
+    <line x1="180" y1="180" x2="220" y2="180" stroke="black" stroke-width="2"/>
+
+    <!-- Post-synaptic neuron (dendrite) -->
+    <rect x="220" y="120" width="360" height="60" fill="#B0B0B0" stroke="black" stroke-width="2"/>
+
+    <!-- Post-synaptic density (rectangle on the dendrite) -->
+    <rect x="220" y="120" width="40" height="60" fill="#d9534f" stroke="black" stroke-width="2"/>
+
+    <!-- NMDA receptors (large rectangles on the post-synaptic density) -->
+    <rect x="225" y="125" width="30" height="50" fill="#5cb85c" stroke="black" stroke-width="2"/>
+    <text x="260" y="150" font-family="Verdana" font-size="16" fill="black">NMDA receptor</text>
+    
+    <!-- GluN1 Subunit -->
+    <rect x="225" y="125" width="15" height="50" fill="#8BC34A" stroke="black" stroke-width="2"/>
+    <text x="260" y="175" font-family="Verdana" font-size="16" fill="black">GluN1 subunit</text>
+
+    <!-- GluN2 Subunit -->
+    <rect x="240" y="125" width="15" height="50" fill="#FFCA28
