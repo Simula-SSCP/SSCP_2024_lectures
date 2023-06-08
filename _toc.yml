@@ -1,10 +1,11 @@
 format: jb-book
 root: index.rst
 parts:
-  - caption: FEniCS intro
+  - caption: The finite element method (FEM)
     chapters:
       - file: "L12 (FEniCS Intro)/L01_FEM_intro.ipynb"
       - file: "L12 (FEniCS Intro)/L02_FEniCS_Diffusion.ipynb"
+      - file: "L12 (FEniCS Intro)/L03_FEniCS_Darcy.ipynb"
 
   - caption: FEniCS Electrophysiology
     chapters:
