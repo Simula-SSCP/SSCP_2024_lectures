@@ -24,11 +24,11 @@ To run the experiments of this tutorial change directories as follows:
 .. code-block:: bash
 
    # run clamp experiment
-   bench --imp TT2  --clamp -40.0 --clamp-dur 200 --clamp-start 10  --validate --duration 500 --stim-curr 0. --fout=./VmClamp
+   bench --imp tenTusscherPanfilov  --clamp -40.0 --clamp-dur 200 --clamp-start 10  --validate --duration 500 --stim-curr 0. --fout=./VmClamp
 
    # convert to hdf5 for limpetGUI visualization
    bin2h5.py VmClamp_header.txt svclamp.h5
-   txt2h5.py TT2_trace_header.txt Trace_0.dat curclamp.h5
+   txt2h5.py tenTusscherPanfilov_trace_header.txt Trace_0.dat curclamp.h5
 
    # visualize
    limpetGUIpyQt svclamp.h5

@@ -41,7 +41,7 @@ The following parameters are exposed to steer the experiment:
 
 .. code-block:: bash
 
-  --EP {TT2,GPB}        pick human EP model (default is TT2)
+  --EP {tenTusscherPanfilov,GrandiPanditVoigt}        pick human EP model (default is tenTusscherPanfilov)
 
   --EP-par EP_PAR       provide a parameter modification string (default is '')
 
@@ -98,12 +98,12 @@ run
 **Experiment exp01 (short pacing protocol)**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We start with pacing the TT2 human myocycte model at a pacing cycle length of 500 ms 
+We start with pacing the tenTusscherPanfilov human myocycte model at a pacing cycle length of 500 ms 
 for a duration of 5 seconds (5000 msecs).       
 
 .. code-block:: bash
 
-   ./run.py --EP TT2 --duration 5000 --bcl 500 --ID exp01 --visualize --vis_var ICaL INa IK1
+   ./run.py --EP tenTusscherPanfilov --duration 5000 --bcl 500 --ID exp01 --visualize --vis_var ICaL INa IK1
 
 
 You will get an overview of current traces of the model.
@@ -119,9 +119,9 @@ to 20 seconds (20000 msecs).
 
 .. code-block:: bash
 
-   ./run.py --EP TT2 --duration 20000 --bcl 500 --ID exp02 --visualize
+   ./run.py --EP tenTusscherPanfilov --duration 20000 --bcl 500 --ID exp02 --visualize
 
-At the end of the pacing protocol the initial state vector is saved in the file ``exp02_TT2_bcl_500_ms_dur_20000_ms.sv``.
+At the end of the pacing protocol the initial state vector is saved in the file ``exp02_tenTusscherPanfilov_bcl_500_ms_dur_20000_ms.sv``.
 
 .. code-block:: bash
 
@@ -134,7 +134,7 @@ At the end of the pacing protocol the initial state vector is saved in the file 
    -                   # Ca_e
    0.00302465          # Iion
    -                   # tension_component
-   TT2
+   tenTusscherPanfilov
    0.13553             # Ca_i
    3.90357             # CaSR
    0.000390854         # CaSS
@@ -199,15 +199,15 @@ The results of such modifications are illustrated in the following experiments.
 **Experiment exp03 (short pacing with modified myocyte)**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this experiment we modify the behavior of a TT2 myocyte to match experimental observations
+In this experiment we modify the behavior of a tenTusscherPanfilov myocyte to match experimental observations
 of myocytes harvested from peri-infarct zones in humans. 
 Initially, we simulated one cycle only to observe the effect of parameter modifications
-relative to the baseline TT2 model. 
+relative to the baseline tenTusscherPanfilov model. 
 The referece traces are passed in and you can compared the experiment output.
 
 .. code-block:: bash
 
-   ./run.py --EP TT2 --duration 5000 --bcl 500 --ID exp03 --EP-par "GNa-62%,GCaL-69%,Gkr-70%,GK1-80%" \
+   ./run.py --EP tenTusscherPanfilov --duration 5000 --bcl 500 --ID exp03 --EP-par "GNa-62%,GCaL-69%,Gkr-70%,GK1-80%" \
             --visualize --overlay
 
 Make sure that the parameter modification string is correctly interpreted by :ref:`bench <bench>`
@@ -215,11 +215,11 @@ by inspecting the output log:
 
 .. code-block:: bash
 
-   ./run.py --EP TT2 --duration 500 --bcl 5000 --ID test --EP-par "GNa-62%,GCaL-69%,Gkr-70%,GK1-80%" 
+   ./run.py --EP tenTusscherPanfilov --duration 500 --bcl 5000 --ID test --EP-par "GNa-62%,GCaL-69%,Gkr-70%,GK1-80%" 
 
 
    ... 
-   Ionic model: TT2
+   Ionic model: tenTusscherPanfilov
         GNa                  modifier: -62%            value: 5.63844
         GCaL                 modifier: -69%            value: 1.2338e-05
         Gkr                  modifier: -70%            value: 0.0459
@@ -237,7 +237,7 @@ State variable and current traces stored in the baseline experiment exp02 are us
 
 .. code-block:: bash
 
-   ./run.py --EP TT2 --duration 20000 --bcl 500 --ID exp04 --EP-par "GNa-62%,GCaL-69%,Gkr-70%,GK1-80%" \
+   ./run.py --EP tenTusscherPanfilov --duration 20000 --bcl 500 --ID exp04 --EP-par "GNa-62%,GCaL-69%,Gkr-70%,GK1-80%" \
             --visualize --vis_var Ca_i
 
 Visual comparison of the traces reveals that Calcium-cycling in the peri-infarct myocyte shows **alternans**.
@@ -246,12 +246,12 @@ can be inspected with the *meld* or any other diff program of your choice.
 
 .. code-block:: bash
 
-   meld exp02_TT2_bcl_500_ms_dur_20000_ms.sv exp04_TT2_bcl_500_ms_dur_20000_ms.sv
+   meld exp02_tenTusscherPanfilov_bcl_500_ms_dur_20000_ms.sv exp04_tenTusscherPanfilov_bcl_500_ms_dur_20000_ms.sv
 
 .. figure:: /images/01_01_meld_comparison_state_vectors.png
    :align: center
 
-   Comparing initial state vectors of baseline and peri-infarct TT2 human ventricular myocyte model
+   Comparing initial state vectors of baseline and peri-infarct tenTusscherPanfilov human ventricular myocyte model
    after 20 seconds of pacing at a basic cycle length of 500 ms.
 """
 import os
@@ -359,9 +359,9 @@ def parser():
     parser = tools.standard_parser()
     group = parser.add_argument_group('experiment specific options')
     group.add_argument('--EP',
-                        default = 'TT2',
-                        choices = ['TT2','MBRDR', 'ORd'],
-                        help = 'pick human EP model (default is TT2)')
+                        default = 'tenTusscherPanfilov',
+                        choices = ['tenTusscherPanfilov','DrouhardRoberge', 'OHara'],
+                        help = 'pick human EP model (default is tenTusscherPanfilov)')
     group.add_argument('--EP_par',
                         default = '',
                         help = 'provide a parameter modification string (default is \'\')')
@@ -487,7 +487,7 @@ def run(args, job):
     # + and we use the "correct" name (my be inspected in the .model file)
     if args.EP == 'MBRDR':
         pass
-    elif args.EP in ['TT2', 'ORd']:
+    elif args.EP in ['tenTusscherPanfilov', 'ORd']:
         cmd += ['--stim-species', 'K_i']
     # -------------------------------------------------------------------------
 

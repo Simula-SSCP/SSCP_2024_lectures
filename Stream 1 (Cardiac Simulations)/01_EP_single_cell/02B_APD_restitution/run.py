@@ -96,7 +96,7 @@ The following optional arguments are available (default values are indicated):
                         S1 cycle length and longest S2 coupling interval
     --CIinc             Default: 25 ms
                         Decrement for time interval from CI1 to CI0
-    --imp               Default: GTT2_fast
+    --imp               Default: tenTusscherPanfilov
                         Single-cell model to use
     --params            Default: ' '
                         Parameters of single-cell model to modify
@@ -156,32 +156,32 @@ To run the experiments of this tutorial change directories as follows:
 
 .. code-block:: bash
 
-  ./run.py --imp GTT2_fast --visualize
+  ./run.py --imp tenTusscherPanfilov --visualize
 
-  ./run.py --imp COURTEMANCHE --visualize
+  ./run.py --imp Courtemanche --visualize
 
-  ./run.py --imp SHANNON --visualize
+  ./run.py --imp Shannon --visualize
 
 
-.. _fig-APD-restitution-GTT2_fast:
+.. _fig-APD-restitution-tenTusscherPanfilov:
 
 .. figure:: /images/01_02_APD_res_curves.png
    :width: 100%
    :align: center
 
-   Differences in restitution curves GTT2_fast, Courtemanche and Shannon model
+   Differences in restitution curves tenTusscherPanfilov, Courtemanche and Shannon model
 
 2. Using Table 2 from [Tusscher2006]_, generate a APD restitution curve for the parameter settings -params 'G_Kr=0.172,G_Ks=0.441,G_pCa=0.8666,G_pK=0.00219,G_tf=2' and compute the maximum slope of the restitution curve. It should be well above 1.0 and look similar to Figure 5 in the Tusscher2006 paper.
 
 .. code-block:: bash
 
-  ./run.py --imp GTT2_fast --params G_Kr=0.172,G_Ks=0.441,G_pCa=0.8666,G_pK=0.00219,G_tf=2 --visualize
+  ./run.py --imp tenTusscherPanfilov --params G_Kr=0.172,G_Ks=0.441,G_pCa=0.8666,G_pK=0.00219,G_tf=2 --visualize
 
 3. Do the same as above in 2, but for the parameter settings -params 'G_Kr=0.134,G_Ks=0.270,G_pCa=0.0619,G_pK=0.0730,G_tf=0.6'. The maximum slope of the restitution curve should be well below 1.0, which promotes alternans and arrhythmogenesis.
  
 .. code-block:: bash
 
-  ./run.py --imp GTT2_fast --params G_Kr=0.134,G_Ks=0.270,G_pCa=0.0619,G_pK=0.0730,G_tf=0.6 --visualize
+  ./run.py --imp tenTusscherPanfilov --params G_Kr=0.134,G_Ks=0.270,G_pCa=0.0619,G_pK=0.0730,G_tf=0.6 --visualize
 
 Notes: 
 
@@ -250,7 +250,7 @@ def parser():
                         default = 25,
                         help = 'Decrement for coupling interval (default: 25 ms)')
     group.add_argument('--imp',
-                        default = 'GTT2_fast',
+                        default = 'tenTusscherPanfilov',
                         help =  'Ionic model')
     group.add_argument('--params',
                         default = None,
