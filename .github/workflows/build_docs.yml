@@ -27,7 +27,7 @@ jobs:
         uses: ./.github/actions/initialize_conda_env
 
       - name: Cache executed notebooks
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: _build/.jupyter_cache
           key: jupyter-cache-${{ hashFiles('environment.yml') }}
