@@ -21,7 +21,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Initialize SSCP conda environment
         uses: ./.github/actions/initialize_conda_env
