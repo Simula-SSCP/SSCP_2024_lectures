@@ -36,7 +36,7 @@ jobs:
         run:
           jupyter-book build . -W
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         # always upload artifact, which can include error messages
         if: always()
         with:
